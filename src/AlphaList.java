@@ -1,8 +1,9 @@
 
 public class AlphaList {
 
-	private Node first = null;
-	private Node last = null;
+	private Node first;
+	private Node last;
+	private int size;
 
 	private class Node {
 
@@ -10,19 +11,16 @@ public class AlphaList {
 		public Node next;
 	}
 
-	public boolean empty() {
-		return first == null;
+	public AlphaList() {
+		first = null;
+		last = null;
+		size = 0;
 	}
 	
-	public boolean greaterThanTen() {
-		Node selected = first;
-		int count = 1;
-		while(selected != last) {
-			selected = first.next;
-			count += 1;
-		}
-		return count > 10;
+	public boolean empty() {
+		return size == 0;
 	}
+	
 
 	public String dequeue() {
 		if (empty()) {
@@ -36,11 +34,12 @@ public class AlphaList {
 
 		String f = first.item;
 		first = first.next;
+		size -= 1;
 		return f;
 	}
 
 	public void enqueue(String item) {
-		if (greaterThanTen()) {
+		if (size >= 10) {
 		throw new RuntimeException("List is greater than 10.");
 		}
 		Node x = new Node();
@@ -48,9 +47,11 @@ public class AlphaList {
 		if (first == null && last == null) {
 			first = x;
 			last = x;
+			size += 1;
 			return;
 		}
 		last.next = x;
 		last = x;
+		size += 1;
 	}
 }

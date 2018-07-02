@@ -15,8 +15,10 @@ public class Queue {
 		alpha.enqueue("I");
 		alpha.enqueue("J");
 		alpha.enqueue("K");
+
 		
 
 		System.out.println(alpha.dequeue());
+
 	}
 }
